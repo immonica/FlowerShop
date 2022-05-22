@@ -25,14 +25,14 @@ public class StartController {
     public void handelCreateAccount () throws IOException {
         Parent root = (Parent) FXMLLoader.load(this.getClass().getClassLoader().getResource("register.fxml"));
         Scene scene = CreateAccount.getScene();
-       // rootPane.getChildren().add(root);
+        rootPane.getChildren().add(root);
 
     }
 
     public void  handelLogin() throws IOException {
         Parent root = (Parent) FXMLLoader.load(this.getClass().getClassLoader().getResource("login.fxml"));
         Scene scene = LogIn.getScene();
-       // rootPane.getChildren().add(root);
+        rootPane.getChildren().add(root);
     }
 }
 

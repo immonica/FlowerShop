@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-//import org.example.project.Services.UserService;
+import com.example.flowershopproject.Services.UserService;
 
 import java.util.Objects;
 
@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
 
-        // UserService.loadUsersFromFile();
+        UserService.loadUsersFromFile();
         Parent root = (Parent)FXMLLoader.load(Objects.requireNonNull(this.getClass().getClassLoader().getResource("start.fxml")));
         primaryStage.setTitle("FlowerShop");
         primaryStage.setScene(new Scene(root, 525.0D, 448.0D));
