@@ -1,3 +1,2 @@
 # FlowerShop
-Flower Shop Management System Project
-
+Flower Shop Management System
