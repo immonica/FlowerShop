@@ -1,5 +1,6 @@
 package com.example.flowershopproject.Controller;
 
+import com.example.flowershopproject.Actions.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import javafx.stage.Stage;
-import com.example.flowershopproject.Actions.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,10 +53,10 @@ public class ClientmainController implements Initializable {
     public void handleViewBouquetsAction() throws Exception, IOException {
         User us = ClientmainController.getClient();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getClassLoader().getResource("bouquets.fxml"));
+        loader.setLocation(this.getClass().getClassLoader().getResource("florists.fxml"));
         Parent root1 = loader.load();
         Scene scene1 = new Scene(root1);
-        BouquetsController control = loader.getController();
+        FloristsController control = loader.getController();
         control.initData(us);
         Stage stage1 = (Stage) viewBouquets.getScene().getWindow();
         stage1.setScene(scene1);
@@ -65,7 +65,7 @@ public class ClientmainController implements Initializable {
     public void handleViewOrdersButton() throws Exception {
         User us=ClientmainController.getClient();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getClassLoader().getResource("CustomerOrders.fxml"));
+        loader.setLocation(this.getClass().getClassLoader().getResource("customerOrders.fxml"));
         Parent root1 = loader.load();
         Scene scene1 = new Scene(root1);
         OrdersCustomerController control = loader.getController();

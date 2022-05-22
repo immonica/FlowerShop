@@ -1,5 +1,9 @@
 package com.example.flowershopproject.Controller;
 
+import com.example.flowershopproject.Actions.User;
+import com.example.flowershopproject.Exceptions.UserDoesNotExist;
+import com.example.flowershopproject.Exceptions.WrongPassword;
+import com.example.flowershopproject.Services.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,10 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import com.example.flowershopproject.Actions.User;
-import com.example.flowershopproject.Exceptions.UserDoesNotExist;
-import com.example.flowershopproject.Exceptions.WrongPassword;
-import com.example.flowershopproject.Services.UserService;
 
 import java.io.IOException;
 
@@ -67,10 +67,10 @@ public class LoginController {
             }
             if (UserService.checkRole(us)==2){
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(this.getClass().getClassLoader().getResource("managermain.fxml"));
+                loader.setLocation(this.getClass().getClassLoader().getResource("floristmain.fxml"));
                 Parent root1 = loader.load();
                 Scene scene1 = new Scene(root1);
-                ManagermainController control = loader.getController();
+                FloristmainController control = loader.getController();
                 control.initData(us);
                 Stage stage1 = (Stage) login.getScene().getWindow();
                 stage1.setScene(scene1);
@@ -78,7 +78,7 @@ public class LoginController {
             }
 
 
-        } catch (UserDoesNotExist|WrongPassword var3) {
+        } catch (UserDoesNotExist | WrongPassword var3) {
             this.loginMessage.setText(var3.getMessage());
         }
     }

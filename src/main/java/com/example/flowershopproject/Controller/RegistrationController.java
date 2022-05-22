@@ -1,4 +1,4 @@
-package com.example.flowershopproject.Controllers;
+package com.example.flowershopproject.Controller; //???
 
 
 import javafx.collections.FXCollections;
@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class RegistrationController {
 
-    ObservableList<String> roleList = FXCollections.observableArrayList("Client", "Manager");
+    ObservableList<String> roleList = FXCollections.observableArrayList("Client", "Flowershop"); ///!!
     @FXML
     private Text registrationMessage;
     @FXML

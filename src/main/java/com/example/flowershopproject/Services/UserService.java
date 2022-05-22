@@ -1,9 +1,9 @@
 package com.example.flowershopproject.Services;
 
-//import com.fasterxml.jackson.core.type.TypeReference;
-//import com.fasterxml.jackson.databind.DeserializationFeature;
-//import com.fasterxml.jackson.databind.ObjectMapper;
-//import org.apache.commons.io.FileUtils;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.apache.commons.io.FileUtils;
 import com.example.flowershopproject.Actions.User;
 import com.example.flowershopproject.Exceptions.CouldNotWriteUsersException;
 import com.example.flowershopproject.Exceptions.UserDoesNotExist;
@@ -24,19 +24,19 @@ import java.util.Objects;
 
 public class UserService {
     private static List<User> users;
-   // private static final Path USERS_PATH = FileSystemService.getPathToFile(new String[]{"config", "users.json"});
+    private static final Path USERS_PATH = FileSystemService.getPathToFile(new String[]{"config", "users.json"});
 
     public UserService() {
     }
 
     public static void loadUsersFromFile() throws IOException {
-    //    if (!Files.exists(USERS_PATH, new LinkOption[0])) {
-      //      FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("users.json"), USERS_PATH.toFile());
+        if (!Files.exists(USERS_PATH, new LinkOption[0])) {
+          //  FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("users.json"), USERS_PATH.toFile());
         }
 
-     //   ObjectMapper objectMapper = new ObjectMapper();
-      //  objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-      /*  users = (List) objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        users = (List) objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
         });
     }
     public static void addUser(String username, String password, String name, String role) throws UsernameAlreadyExistException {
@@ -67,7 +67,7 @@ public class UserService {
             throw new CouldNotWriteUsersException();
         }
     }
-*/
+
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
@@ -109,21 +109,21 @@ public class UserService {
     public static int checkRole(User u) throws Exception {
         if (u.getRole().equals("Client"))
             return 1;
-        else if (u.getRole().equals("Manager"))
+        else if (u.getRole().equals("Florist"))
             return 2;
         else
             throw new UserDoesNotExist(u.getUsername());
     }
-    public static List<User> getWriters() throws Exception {
+    public static List<User> getFlorists() throws Exception {
         UserService.loadUsersFromFile();
-        List<User> Writers = new ArrayList<>();
+        List<User> Florists = new ArrayList<>();
         for (User us : users) {
-            if (Objects.equals(us.getRole(), "Manager")) {
-                Writers.add(us);
+            if (Objects.equals(us.getRole(), "Florists")) {
+                Florists.add(us);
             }
         }
 
-        return Writers;
+        return Florists;
     }
 
 
