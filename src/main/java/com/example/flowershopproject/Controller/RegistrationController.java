@@ -1,4 +1,4 @@
-package org.example.project.Controllers;
+package com.example.flowershopproject.Controllers;
 
 
 import javafx.collections.FXCollections;
@@ -14,14 +14,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.example.project.Exceptions.UsernameAlreadyExistException;
-import org.example.project.Services.UserService;
+import com.example.flowershopproject.Exceptions.UsernameAlreadyExistException;
+import com.example.flowershopproject.Services.UserService;
 
 import java.io.IOException;
 
 public class RegistrationController {
 
-    ObservableList<String> roleList = FXCollections.observableArrayList("Client", "Writer");
+    ObservableList<String> roleList = FXCollections.observableArrayList("Client", "Manager");
     @FXML
     private Text registrationMessage;
     @FXML
